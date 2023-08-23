@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+
+<main>
+
+    <!-- =======================
+    Page Banner START -->
+    <div class="container-fluid px-0">
+        <div class="bg-info h-100px h-md-200px rounded-0"
+            style="background:url('images/pattern/04.png') no-repeat center center; background-size:cover;">
+        </div>
+    </div>
+    <div class="container mt-n4">
+        <div class="row">
+            <!-- Profile banner START -->
+            <div class="col-12">
+                <div class="card bg-transparent card-body p-0">
+                    <div class="row d-flex justify-content-between">
+                        <!-- Avatar -->
+                        <div class="col-auto mt-4 mt-md-0">
+                            <div class="avatar avatar-xxl mt-n3">
+                                <img class="rounded-circle" src="{% static 'images/user.jpg' %}" alt="">
+                            </div>  
+                        </div>
+                        <!-- Profile info -->
+                        <div class="col d-md-flex justify-content-between align-items-center mt-4">
+                            <div>
+                                <h1 class="my-1 fs-4">swapnil@gmail.com<i
+                                        class="bi bi-patch-check-fill text-info small"></i></h1>
+                                <ul class="list-inline mb-0">
+                                    <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i
+                                            class="fas fa-star text-warning me-2"></i>Faculty </li>
+                                    <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i
+                                            class="fas fa-user-graduate text-orange me-2"></i>Government Polytechnic
+                                        Ahmedabad</li>
+                                </ul>
+                            </div>
+                            <!-- Button -->
+                            <!--<div class="d-flex align-items-center mt-2 mt-md-0">
+                                <a href={% url 'hod' %} class="btn btn-outline-success mb-0">Apply For Leave</a>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+                <!-- Profile banner END -->
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 mx-auto text-center">
+                                <!-- Content -->
+                                <p class="text-center">Use this interface to add a an assignmnet, notes and
+                                    video references.</p>
+                            </div>
+                        </div>
+
+                        <div class="card bg-transparent border rounded-3 mb-5">
+                            <div id="stepper" class="bs-stepper stepper-outline">
+                                <!-- Card header -->
+                                <div class="card-header bg-light border-bottom px-lg-5">
+                                    <!-- Step Buttons START -->
+                                    <div class="bs-stepper-header" role="tablist">
+                                        
+
+                                        <!-- Step 2 -->
+                                        <div class="step" data-target="#step-2">
+                                            <div class="d-grid text-center align-items-center">
+                                                <button type="button" class="btn btn-link step-trigger mb-0" role="tab"
+                                                    id="steppertrigger2" aria-controls="step-2">
+                                                    <span class="bs-stepper-circle">1</span>
+                                                </button>
+                                                <h6 class="bs-stepper-label d-none d-md-block">Add Assignment</h6>
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+
+                                        <!-- Step 3 -->
+                                        <div class="step" data-target="#step-3">
+                                            <div class="d-grid text-center align-items-center">
+                                                <button type="button" class="btn btn-link step-trigger mb-0" role="tab"
+                                                    id="steppertrigger3" aria-controls="step-3">
+                                                    <span class="bs-stepper-circle">2</span>
+                                                </button>
+                                                <h6 class="bs-stepper-label d-none d-md-block">References</h6>
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+
+                                        <!-- Step 4 -->
+                                        <div class="step" data-target="#step-4">
+                                            <div class="d-grid text-center align-items-center">
+                                                <button type="button" class="btn btn-link step-trigger mb-0" role="tab"
+                                                    id="steppertrigger4" aria-controls="step-4">
+                                                    <span class="bs-stepper-circle">3</span>
+                                                </button>
+                                                <h6 class="bs-stepper-label d-none d-md-block">Notice</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Step Buttons END -->
+                                </div>
+
+                                <!-- Card body START -->
+                                <div class="card-body">
+                                    <!-- Step content START -->
+                                    <div class="bs-stepper-content">
+                                        <div onsubmit="return false">
+
+                                            
+                                            <!-- Step 2 content START -->
+                                            <div id="step-2" role="tabpanel" class="content fade"
+                                                aria-labelledby="steppertrigger2">
+                                                <!-- Title -->
+                                                <h4>Add Assignment</h4>
+
+                                                <hr> <!-- Divider -->
+                                                <form action='{% url "assignment_upload" %}' method="POST"
+                                                    enctype="multipart/form-data" onchange="this.submit();">
+                                                    <div class="row">
+                                                        <!-- Upload image START -->
+                                                        <div class="col-12">
+                                                            <div
+                                                                class="text-center justify-content-center align-items-center p-4 p-sm-5 border border-2 border-dashed position-relative rounded-3">
+                                                                <!-- Image -->
+                                                                <img src="{% static 'images/element/gallery.svg' %}"
+                                                                    class="h-50px" alt="">
+                                                                <div>
+                                                                    <h6 class="my-2">Upload course image here, or<a
+                                                                            href="#!" class="text-primary"> Browse</a>
+                                                                    </h6>
+                                                                    <label style="cursor:pointer;">
+                                                                        <span>
+                                                                            <input class="form-control stretched-link"
+                                                                                type="file" name="assign_image"
+                                                                                id="assignments"
+                                                                                accept="image/gif, image/jpeg, image/png" />
+                                                                        </span>
+                                                                    </label>
+                                                                    <p class="small mb-0 mt-2"><b>Note:</b> Only JPG,
+                                                                        JPEG and PNG. Our suggested dimensions are 600px
+                                                                        * 450px. Larger image will be cropped to 4:3 to
+                                                                        fit our thumbnails/previews.</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Button -->
+
+                                                        </div>
+                                                        <!-- Upload image END -->
+
+
+                                                        <!-- Step 2 button -->
+                                                        
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!-- Step 2 content END -->
+
+                                        <!-- Step 3 content START -->
+                                        
+                                        <!-- Step 2 content START -->
+                                        <div id="step-3" role="tabpanel" class="content fade"
+                                        aria-labelledby="steppertrigger3">
+                                        <!-- Title -->
+                                        <h4>Add Video URL</h4>
+
+                                        <hr> <!-- Divider -->
+                                        <form action='{% url "video_upload" %}' method="POST"
+                                            enctype="multipart/form-data" onchange="this.submit();">
+                                            <div class="row">
+                                                <!-- Upload image START -->
+                                                <div class="col-12">
+                                                    <div
+                                                        class="text-center justify-content-center align-items-center p-4 p-sm-5 border border-2 border-dashed position-relative rounded-3">
+                                                        <!-- Image -->
+                                                        <img src="{% static 'images/element/gallery.svg' %}"
+                                                            class="h-50px" alt="">
+                                                        <div>
+                                                            <h6 class="my-2">Upload video link here, or
+                                                            
+                                                            </h6>
+                                                            <label style="cursor:pointer;">
+                                                                <span>
+                                                                    <input class="form-control stretched-link"
+                                                                        type="text" name="assign_video"
+                                                                        id="video_upload"/>
+                                                                </span>
+                                                            </label>
+                                                            <p class="small mb-0 mt-2"><b>Note:</b> Only links in text format are allowed.</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Button -->
+
+                                                </div>
+                                                <!-- Upload image END -->
+
+
+                                                <!-- Step 2 button -->
+                                                
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Step 2 content END -->
+                                        <!-- Step 4 content START -->
+
+        
+                                                    
+                                                    <!-- Step 2 content START -->
+                                                    <div id="step-4" role="tabpanel" class="content fade"
+                                                        aria-labelledby="steppertrigger4">
+                                                        <!-- Title -->
+                                                        <h4>Add Notice</h4>
+        
+                                                        <hr> <!-- Divider -->
+                                                        <form action='{% url "notices" %}' method="POST"
+                                                           onchange="this.submit();">
+                                                            <div class="row">
+                                                                <!-- Upload image START -->
+                                                                <div class="col-12">
+                                                                    <div
+                                                                        class="text-center justify-content-center align-items-center p-4 p-sm-5 border border-2 border-dashed position-relative rounded-3">
+                                                                        <!-- Image -->
+                                                                        
+                                                                        <div>
+                                                                            <h4 class="my-2">Write notice here, or
+                                                                                  
+                                                                            </h4>
+                                                                        <label style="cursor:pointer;">
+                                                                            <span>
+                                                                                <input class="form-control stretched-link"
+                                                                                    type="text" name="data_cc"
+                                                                                    id="notices"/>
+                                                                            </span>
+                                                                        </label>
+                                                                            <p class="small mb-0 mt-2"><b>Note:</b> Only text in written format is supported here.</p>
+                                                                        </div>
+                                                                    </div>
+        
+                                                                    <!-- Button -->
+        
+                                                                </div>
+                                                                <!-- Upload image END -->
+        
+        
+                                                                <!-- Step 2 button -->
+                                                                
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                        
+                                       
+                                            
+                                    </div>
+                                    <!-- Reviewer START -->
+
+                                    <!-- Step 4 button -->
+                                </form>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 content END -->
+
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Card body END -->
+            </div>
+        </div>
+    </div>
+    </section>
+    <!-- =======================
+                Steps END -->
+
+
+    </div>
+    </div>
+    </div>
+
+    <!-- =======================
+    Steps END -->
+
+</main>
+
+{% endblock %}

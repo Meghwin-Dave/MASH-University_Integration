@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+	<section class="p-0 d-flex align-items-center position-relative overflow-hidden">
+	
+		<div class="container-fluid">
+			<div class="row">
+				<!-- left -->
+				<div class="col-12 col-lg-6 d-md-flex align-items-center justify-content-center bg-primary bg-opacity-10 vh-lg-100">
+					<div class="p-3 p-lg-5">
+						<!-- Title -->
+						<div class="text-center">
+							<h2 class="fw-bold">Welcome to our community</h2>
+							<p class="mb-0 h6 fw-light">Let's start your learning journey!</p>
+						</div>
+						<!-- SVG Image -->
+						<img src="{% static 'images/element/02.svg' %}" class="mt-5" alt="">
+						<!-- Info -->
+					</div>
+				</div>
+
+				<!-- Right -->
+				<div class="col-12 col-lg-6 m-auto">
+					<div class="row my-5">
+						<div class="col-sm-10 col-xl-8 m-auto">
+							<!-- Title -->
+							<h2>Sign up for your account!</h2>
+							<p class="lead mb-4">Nice to see you! Please Sign up with your account.</p>
+						
+							<!-- Form START -->
+							<form action="{% url 'register' %}" method="POST">  
+								{% csrf_token %}
+								<!-- Enrollment --> 
+								<div class="form-group">
+									<select class="form-control" name="role" id="Role">
+									  {% for role in roles %}
+									  <option value="{{role.id}}">{{role.Role}}</option>
+									  {% endfor %}
+									</select>
+									<br>
+								  </div>
+							
+								
+								<div class="mb-4">
+									<label for="Email" class="form-label">Email address *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
+										<input type="email" class="form-control border-0 bg-light rounded-end ps-1" name='Email' placeholder="E-mail" id="Email">
+									</div>
+								</div>
+								<!-- Password -->
+								<div class="mb-4">
+									<label for="Password1" class="form-label">Password *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" name="Password" placeholder="*********" id="Password">
+									</div>
+								</div>
+								<!-- Confirm Password -->
+								<div class="mb-4">
+									<label for="Password2" class="form-label">Confirm Password *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" name="Password1"placeholder="*********" id="Password1">
+									</div>
+								</div>
+								<!-- Check box -->
+								<div class="mb-3">
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="checkbox-1">
+										<label class="form-check-label" for="checkbox-1">By signing up, you agree to the<a href="#"> terms of service</a></label>
+									</div>
+								</div>
+								<!-- Button -->
+								<div class="align-items-center mt-0 mb-0">
+									<div class="d-grid">
+										<button class="btn btn-primary mb-0" type="submit">Sign Up</button>
+									</div>
+								</div>
+							</form>
+							<!-- Form END -->
+
+							<!-- Social buttons -->
+							<div class="row mb-1">
+								<!-- Divider with text -->
+								<div class="position-relative my-4 mb-0 mt-0">
+									<hr>
+								</div>
+							</div>
+							<!-- Sign up link -->
+							<div class="mt-0 text-center">
+								<span>Already have an account?<a href={% url 'sign_ins' %}> Sign in here</a></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+{% endblock %}
